@@ -42,18 +42,10 @@ pipeline {
             when {
                 branch 'master'
             }
-        stage('DeployToProduction') {
-            when {
-                branch 'master'
-            }
             steps {
                 input 'Deploy to Production?'
                 milestone(1)
-                kubernetesDeploy(
-                    kubeconfigId: 'kubeconfig',
-                    configs: 'train-schedule-kube.yml',
-                    enableConfigSubstitution: true
-                )
+                //implement Kubernetes deployment here
             }
         }
     }
